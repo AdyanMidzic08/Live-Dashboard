@@ -1,0 +1,30 @@
+services:
+  frontend:
+    build: .
+    ports:
+      - "5173:5173"
+    command: npm run dev -- --host
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: always
+
+  todo-server:
+    build: .
+    ports:
+      - "3001:3001"
+    command: npm run todo
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: always
+
+  habit-server:
+    build: .
+    ports:
+      - "4000:4000"
+    command: npm run habit
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: always
