@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Dashboard API</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background: #f8f9fa;
+      }
+      .jumbotron {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+      .card {
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .method-badge {
+        width: 80px;
+        display: inline-block;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pos-f-t">
+      <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+          <h4 class="text-white">Live Dashboard API</h4>
+          <span class="text-muted">Documentation and Status Page</span>
+          <ul class="navbar-nav mt-3">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#endpoints">API Endpoints</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#status">System Status</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <span class="navbar-brand mb-0 h1 ml-3">Backend Service</span>
+      </nav>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container text-center">
+        <h1 class="display-4 font-weight-bold">Live Dashboard Backend</h1>
+        <p class="lead">
+          High-performance REST API powered by Node.js, Express, and TypeScript.
+        </p>
+        <hr class="my-4 bg-white" />
+        <p>Serving data for your React Frontend application seamlessly.</p>
+        <p class="lead">
+          <a
+            class="btn btn-light btn-lg text-primary font-weight-bold"
+            href="#endpoints"
+            role="button"
+            >View Documentation</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="container mb-5">
+      <div class="row" id="status">
+        <div class="col-md-4">
+          <div class="card p-3 mb-4 text-center">
+            <div class="card-body">
+              <h5 class="card-title text-success">Online</h5>
+              <p class="card-text">System Status</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 mb-4 text-center">
+            <div class="card-body">
+              <h5 class="card-title text-primary">JSONStorage</h5>
+              <p class="card-text">Data Persistence</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 mb-4 text-center">
+            <div class="card-body">
+              <h5 class="card-title text-info">TypeScript</h5>
+              <p class="card-text">Type Safety</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mb-4 mt-4" id="quicklinks">Navigation</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <a href="/todos" target="_blank" style="text-decoration: none">
+            <div class="card text-white bg-dark mb-3">
+              <div class="card-body text-center">
+                <h5 class="card-title">JSON Data</h5>
+                <p class="card-text">Raw API Response</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a
+            href="http://localhost:5173"
+            target="_blank"
+            style="text-decoration: none"
+          >
+            <div class="card text-white bg-info mb-3">
+              <div class="card-body text-center">
+                <h5 class="card-title">React Page</h5>
+                <p class="card-text">Open Dashboard</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="/test.html" style="text-decoration: none">
+            <div class="card text-white bg-warning mb-3">
+              <div class="card-body text-center">
+                <h5 class="card-title">Echo API Page</h5>
+                <p class="card-text">Test Console</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <h3 class="mb-4 mt-4" id="endpoints">API Endpoints</h3>
+      <div class="card">
+        <div class="card-body p-0">
+          <table class="table table-hover mb-0">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Method</th>
+                <th scope="col">Endpoint</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="badge badge-success method-badge p-2">GET</span>
+                </td>
+                <td><code>/todos</code></td>
+                <td>Retrieve all task items</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-primary method-badge p-2">POST</span>
+                </td>
+                <td><code>/todos</code></td>
+                <td>Create a new task</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-warning method-badge p-2 text-white"
+                    >PUT</span
+                  >
+                </td>
+                <td><code>/todos/:id</code></td>
+                <td>Update task status</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge badge-danger method-badge p-2"
+                    >DELETE</span
+                  >
+                </td>
+                <td><code>/todos/:id</code></td>
+                <td>Remove a task</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+      <div class="container">
+        <small>Copyright &copy; 2026 Live Dashboard Backend</small>
+      </div>
+    </footer>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,19 +1,24 @@
 import express from "express";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
 import type { Todo } from "../Interfaces/interface-todo";
 import { v4 as uuidv4 } from "uuid";
 import { readTodos, writeTodo } from "./todo-storage";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "todos-public")));
 
 let Todos: Todo[] = readTodos();
 
 app.get("/", (req, res) => {
-  res.send("hello world");
-  req;
+  res.sendFile(path.join(__dirname, "todos-public", "todo-public.html"));
 });
 
 app.get("/todos", (req, res) => {

@@ -14,13 +14,13 @@
 
 ## 1. Overview
 
-The Live Dashboard is a full-stack application designed to manage daily productivity tasks and track personal habits. It features a React-based frontend interface communicating with dedicated microservices for managing Todo items and Habit tracking data. The application is built with a focus on modularity, type safety using TypeScript, and ease of deployment via Docker.
+The Live Dashboard is a full-stack application designed to manage daily productivity tasks. It features a React-based frontend interface communicating with a dedicated microservice for managing Todo items. The application is built with a focus on modularity, type safety using TypeScript, and ease of deployment via Docker.
 
 ### Key Features
 
 - **Dashboard Analytics**: Real-time visual statistics of total and completed tasks.
 - **Task Management (Todo)**: Full CRUD capabilities for daily to-do items.
-- **Habit Tracking**: Persistence and tracking for recurring daily habits.
+- **Optimistic UI Updates**: Instant feedback on task completion and deletion.
 - **Responsive UI**: Mobile-first design implementation using Bootstrap grid system.
 - **Containerization**: Fully containerized environment for development and production consistency.
 
@@ -45,14 +45,12 @@ The codebase is organized into frontend components and backend services within a
 src/
 ├── Components/           # React UI Components
 │   ├── DashboardStats.tsx
-│   ├── Habits.tsx
 │   ├── TaskForm.tsx
 │   ├── TaskList.tsx
 │   └── Todo.tsx
 ├── Typescript/           # Logic Layer
 │   └── Backend/
-│       ├── Todo/         # Todo Service (Port 3001)
-│       ├── Habit/        # Habit Service (Port 4000)
+│       ├── Todo/         # Todo Service (Port 3000)
 │       └── Interfaces/   # Shared TypeScript Interfaces
 ├── App.tsx               # Root Component
 └── main.tsx              # Application Entry Point
@@ -83,26 +81,16 @@ src/
 
 ### Local Development Usage
 
-To run the application locally without Docker, you must start the frontend and backend services independently.
+To run the application locally without Docker, you can start all services with one command:
 
-1.  **Frontend Application**:
+1.  **Start Development Environment**:
 
     ```bash
     npm run dev
     ```
 
+    This will concurrently start the Vite frontend and the Todo backend service.
     Access via browser at `http://localhost:5173`.
-
-2.  **Backend Services**:
-    Open separate terminal instances for each service:
-    - Todo Service:
-      ```bash
-      npm run todo
-      ```
-    - Habit Service:
-      ```bash
-      npm run habit
-      ```
 
 ---
 
@@ -129,8 +117,7 @@ docker-compose down
 Once the containers are running, the services are available at the following endpoints:
 
 - **Frontend**: http://localhost:5173
-- **Todo Service API**: http://localhost:3001
-- **Habit Service API**: http://localhost:4000
+- **Todo Service API**: http://localhost:3000
 
 ---
 
@@ -138,11 +125,10 @@ Once the containers are running, the services are available at the following end
 
 The application services are configured to listen on specific ports. Ensure these ports are available on the host machine.
 
-| Service           | Port | Description                        |
-| :---------------- | :--- | :--------------------------------- |
-| **Frontend**      | 5173 | React Development Server           |
-| **Todo Service**  | 3001 | REST API for processing Todo items |
-| **Habit Service** | 4000 | REST API for processing Habits     |
+| Service          | Port | Description                        |
+| :--------------- | :--- | :--------------------------------- |
+| **Frontend**     | 5173 | React Development Server           |
+| **Todo Service** | 3000 | REST API for processing Todo items |
 
 ---
 
@@ -150,8 +136,7 @@ The application services are configured to listen on specific ports. Ensure thes
 
 The `package.json` file contains the following scripts for development and maintenance:
 
-- `npm run dev`: Starts the Vite development server.
+- `npm run dev`: Concurrent start of Vite frontend and Todo server.
 - `npm run build`: Compiles TypeScript and builds the frontend for production.
 - `npm run todo`: Starts the standalone Todo Express server.
-- `npm run habit`: Starts the standalone Habit Express server.
 - `npm run lint`: Executes ESLint to verify code quality.
