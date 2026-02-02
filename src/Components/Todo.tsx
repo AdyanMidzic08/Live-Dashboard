@@ -1,4 +1,11 @@
-function Todo() {
+  interface TodoProps {
+    title: string;
+    dueDate: string;
+    completed: boolean;
+  }
+
+function Todo(props: TodoProps) {
+
   return (
     <div className="list-group-item d-flex justify-content-between align-items-center py-3">
       <div className="d-flex align-items-center">
@@ -8,12 +15,9 @@ function Todo() {
         />
         <div>
           <div>
-            <h6 className="mb-1 fw-bold">Buy Groceries</h6>
+            <h6 className="mb-1 fw-bold">{props.title}</h6>
             <small className="text-muted d-block">
-              Due: Today <span className="mx-1">•</span>{" "}
-              <span className="badge bg-success bg-opacity-10 text-success">
-                PERSONAL
-              </span>
+              Due: {props.dueDate} <span className="mx-1">•</span>{" "}
             </small>
           </div>
         </div>

@@ -1,6 +1,32 @@
-import Todo from "./Todo";
+import { useEffect, useState } from "react";
+import TodoComponent from "./Todo";
+import type { Todo } from "../Typescript/Backend/Interfaces/interface-todo";
 
 export const TaskList = () => {
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchTodos() {
+      try {
+        const res = await fetch("http://localhost:3000/todos");
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        let data = await res.json();
+        setTodos(data);
+      } catch (err) {
+        console.error("Error fetching todos:", err);
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchTodos();
+  }, []);
+
   return (
     <>
       <div className="col-lg-8">
@@ -19,7 +45,23 @@ export const TaskList = () => {
               </button>
             </div>
           </div>
-          <Todo />
+          <div className="card-body p-0">
+            {loading && <p className="p-3 text-center">Loading tasks...</p>}
+            {error && <p className="p-3 text-center text-danger">{error}</p>}
+            {!loading && !error && todos.length === 0 && (
+              <p className="p-3 text-center text-muted">No tasks found.</p>
+            )}
+            <div className="list-group list-group-flush">
+              {todos.map((todo) => (
+                <TodoComponent
+                  key={todo.id}
+                  title={todo.title}
+                  dueDate={todo.dueDate || "No date"}
+                  completed={todo.completed}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </>
