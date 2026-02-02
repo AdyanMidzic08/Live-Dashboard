@@ -8,13 +8,13 @@
   {
     "title": "Build Todo App UI",
     "id": "2c7e8a41-5d3b-4f92-bc9a-8a1f6e3d4b72",
-    "completed": true,
+    "completed": false,
     "dueDate": "2026-02-01"
   },
   {
     "title": "Understand useState",
     "id": "b6f1d9a3-4e28-4c7f-9d3a-5a8e2c4b1f90",
-    "completed": true,
+    "completed": false,
     "dueDate": "2026-01-30"
   },
   {

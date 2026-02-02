@@ -14,15 +14,11 @@ export const TaskForm = () => {
               placeholder="What needs to be done?"
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-3">
             <label className="form-label text-muted small fw-bold">
-              CATEGORY
+              DUE DATE
             </label>
-            <select className="form-select">
-              <option>Personal</option>
-              <option>Work</option>
-              <option>Urgent</option>
-            </select>
+            <input type="date" className="form-control form-control-lg" />
           </div>
           <button className="btn btn-primary w-100 py-2 fw-bold">
             + Create Task
