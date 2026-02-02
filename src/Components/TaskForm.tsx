@@ -39,7 +39,7 @@ export const TaskForm = ({ onRefresh }: TaskFormProps) => {
       setStatus("success");
       setTitle("");
       setDueDate("");
-      onRefresh(); // Refresh the list
+      onRefresh();
 
       setTimeout(() => setStatus("idle"), 2000);
     } catch (err) {

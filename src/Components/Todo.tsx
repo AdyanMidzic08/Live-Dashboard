@@ -3,6 +3,7 @@ interface TodoProps {
   dueDate: string;
   completed: boolean;
   onToggle: () => void;
+    onDelete: () => void;
 }
 
 function Todo(props: TodoProps) {
@@ -27,7 +28,10 @@ function Todo(props: TodoProps) {
             </small>
           </div>
         </div>
-        <button className="btn btn-sm text-danger opacity-50 hover-opacity-100">
+        <button
+          className="btn btn-sm text-danger opacity-50 hover-opacity-100 ms-3"
+          onClick={props.onDelete}
+        >
           Remove
         </button>
       </div>

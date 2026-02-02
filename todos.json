@@ -1,14 +1,8 @@
 [
-  {
+    {
     "id": "dummy-123",
     "title": "Welcome Task",
     "completed": false,
     "dueDate": "2024-01-01"
-  },
-  {
-    "title": "School-MEDT",
-    "id": "e724d378-ab6b-4808-bf51-ad2fdfed21f3",
-    "completed": false,
-    "dueDate": "2026-02-09"
   }
 ]

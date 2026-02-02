@@ -45,6 +45,27 @@ export const TaskList = ({ todos, onRefresh }: TaskListProps) => {
     }
   };
 
+  const deleteTodo = async (id: string) => {
+    // Optimistic update
+    // Note: Since 'todos' comes from props, we can't fully strip it from the UI optimistically
+    // without local state overrides or parent cooperation, but we can try the delete immediately.
+
+    try {
+      const res = await fetch(`http://localhost:3000/todos/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) {
+        throw new Error(`Failed to delete todo: ${res.status}`);
+      }
+
+      onRefresh(); // Trigger parent refresh to remove from list
+    } catch (err) {
+      console.error("Error deleting todo:", err);
+      setError("Failed to delete task");
+    }
+  };
+
   const filteredTodos = getFilteredTodos();
 
   return (
@@ -99,6 +120,7 @@ export const TaskList = ({ todos, onRefresh }: TaskListProps) => {
                   dueDate={todo.dueDate || "No date"}
                   completed={todo.completed}
                   onToggle={() => toggleTodo(todo.id)}
+                  onDelete={() => deleteTodo(todo.id)}
                 />
               ))}
             </div>

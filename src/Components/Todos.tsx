@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { DashboardStats } from "./DashboardStats";
 import { TaskForm } from "./TaskForm";
 import { TaskList } from "./TaskList";
-import Habits from "./Habits";
 import type { Todo } from "../Typescript/Backend/Interfaces/interface-todo";
 
 const Todos = () => {
@@ -47,7 +46,6 @@ const Todos = () => {
         <TaskList todos={todos} onRefresh={fetchTodos} />
       </div>
 
-      <Habits />
     </div>
   );
 };
