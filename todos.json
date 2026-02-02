@@ -1,38 +1,14 @@
 [
   {
-    "title": "Learn React Hooks",
-    "id": "9f3a1e2c-7c9d-4b6f-9e5d-1a4c8f6b2a91",
+    "id": "dummy-123",
+    "title": "Welcome Task",
     "completed": false,
-    "dueDate": "2026-02-05"
+    "dueDate": "2024-01-01"
   },
   {
-    "title": "Build Todo App UI",
-    "id": "2c7e8a41-5d3b-4f92-bc9a-8a1f6e3d4b72",
+    "title": "School-MEDT",
+    "id": "e724d378-ab6b-4808-bf51-ad2fdfed21f3",
     "completed": false,
-    "dueDate": "2026-02-01"
-  },
-  {
-    "title": "Understand useState",
-    "id": "b6f1d9a3-4e28-4c7f-9d3a-5a8e2c4b1f90",
-    "completed": false,
-    "dueDate": "2026-01-30"
-  },
-  {
-    "title": "Practice render list with map()",
-    "id": "4a9e7c2d-8b51-4f6a-9c3e-1d2b5a7f8e64",
-    "completed": false,
-    "dueDate": "2026-02-03"
-  },
-  {
-    "title": "Improve CSS Modules",
-    "id": "e1c7a9b5-3f2d-4e68-8a9c-7b6d5f4a2e31",
-    "completed": false,
-    "dueDate": "2026-02-10"
-  },
-  {
-    "title": "Start a mini React project",
-    "id": "7d3f5a8e-9b2c-4e1a-8c6f-2a9d1b4e7f65",
-    "completed": false,
-    "dueDate": "2026-02-15"
+    "dueDate": "2026-02-09"
   }
 ]

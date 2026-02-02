@@ -1,23 +1,10 @@
-import { useEffect, useState } from "react";
 import type { Todo } from "../Typescript/Backend/Interfaces/interface-todo";
 
-export const DashboardStats = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+interface DashboardStatsProps {
+  todos: Todo[];
+}
 
-  useEffect(() => {
-    async function fetchTodos() {
-      try {
-        const res = await fetch("http://localhost:3000/todos");
-        if (!res.ok) return;
-        const data = await res.json();
-        setTodos(data);
-      } catch (err) {
-        console.error("Failed to fetch stats", err);
-      }
-    }
-    fetchTodos();
-  }, []);
-
+export const DashboardStats = ({ todos }: DashboardStatsProps) => {
   const total = todos.length;
   const completed = todos.filter((t) => t.completed).length;
   const pending = todos.filter((t) => !t.completed).length;

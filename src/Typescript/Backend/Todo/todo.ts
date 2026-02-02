@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-let Todos: Todo[] = [];
+let Todos: Todo[] = readTodos();
 
 app.get("/", (req, res) => {
   res.send("hello world");
@@ -33,6 +33,7 @@ app.post("/todos", (req, res) => {
     dueDate: dueDate,
   };
 
+  Todos = readTodos();
   Todos.push(todo);
   writeTodo(Todos);
   res.send(Todos);
@@ -40,6 +41,8 @@ app.post("/todos", (req, res) => {
 
 app.delete("/todos/:id", (req, res) => {
   let { id } = req.params;
+
+  Todos = readTodos();
   let newTodos: Todo[] = [];
   const beforeLength = Todos.length;
 
@@ -62,19 +65,23 @@ app.delete("/todos/:id", (req, res) => {
 app.put("/todos/:id", (req, res) => {
   let { id } = req.params;
   let { completed } = req.body;
-  let todoMaked: boolean = completed;
 
+  Todos = readTodos();
+
+  let todoFound = false;
   for (let i = 0; i < Todos.length; i++) {
     if (Todos[i].id === id) {
-      if (Todos[i].completed == false) {
-        Todos[i].completed = true;
-        todoMaked = true;
-      } else {
-        Todos[i].completed = false;
-        todoMaked = false;
-      }
+      Todos[i].completed = completed;
+      todoFound = true;
+      break;
     }
   }
+
+  if (!todoFound) {
+    res.status(404).send({ message: "Todo not found" });
+    return;
+  }
+
   writeTodo(Todos);
 
   res.send(Todos);
