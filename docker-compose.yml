@@ -18,13 +18,3 @@ services:
       - .:/app
       - /app/node_modules
     restart: always
-
-  habit-server:
-    build: .
-    ports:
-      - "4000:4000"
-    command: npm run habit
-    volumes:
-      - .:/app
-      - /app/node_modules
-    restart: always
