@@ -1,29 +1,21 @@
 services:
   frontend:
+    image: live-dashboard
     build: .
     ports:
       - "5173:5173"
-    command: npm run dev -- --host
+    command: npm run host
     volumes:
       - .:/app
       - /app/node_modules
     restart: always
 
   todo-server:
+    image: live-dashboard
     build: .
     ports:
       - "3000:3000"
     command: npm run todo
-    volumes:
-      - .:/app
-      - /app/node_modules
-    restart: always
-
-  habit-server:
-    build: .
-    ports:
-      - "4000:4000"
-    command: npm run habit
     volumes:
       - .:/app
       - /app/node_modules
